@@ -1,0 +1,68 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block content %}
+    <!-- ##### Breadcumb Area Start ##### -->
+    <section class="breadcumb-area bg-img bg-overlay" style="background-image: url(img/bg-img/breadcumb3.jpg);">
+        <div class="bradcumbContent">
+            <p>See what’s new</p>
+            <h2>Register</h2>
+        </div>
+    </section>
+    <!-- ##### Breadcumb Area End ##### -->
+
+    <!-- ##### Login Area Start ##### -->
+    <section class="login-area section-padding-100">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12 col-lg-8">
+                    <div class="login-content">
+                        <h3>Welcome Back</h3>
+                        <!-- Login Form -->
+                        <div class="login-form">
+                            <form method="post" enctype="multipart/form-data">
+                              {% csrf_token %}
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                      <label for="inputText4">Firstname</label>
+                                      {{ register_form.first_name }}
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                      <label for="inputPremom4">Lastname</label>
+                                      {{ register_form.last_name }}
+                                    </div>
+                              </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                      <label for="inputEmail4">Email</label>
+                                      {{ register_form.email }}
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                      <label for="inputUsername4">Usename(A.K.A)</label>
+                                      {{ register_form.username }}
+                                    </div>
+                              </div>
+                              <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                      <label for="inputPassword4">Password</label>
+                                      {{ register_form.password }}
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                      <label for="inputPassword4">Confirm</label>
+                                      {{ register_form.password2 }}
+                                    </div>
+                              </div>
+                              <div class="form-group ">
+                                  <label for="inputAvatar">{{ register_form.avatar.label }}</label>
+                                    {{ register_form.avatar }}
+                              </div>
+                            <button type="submit" class="btn oneMusic-btn mt-30">Login</button>
+                            </form>
+                            <form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

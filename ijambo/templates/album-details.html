@@ -1,0 +1,108 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block content %}
+
+    <!-- ##### Breadcumb Area Start ##### -->
+    <section class="breadcumb-area bg-img bg-overlay" style="background-image: url( {% static 'img/bg-img/breadcumb3.jpg' %} );">
+        <div class="bradcumbContent">
+            <p>Single Album</p>
+            <h2>Legendary</h2>
+        </div>
+    </section>
+    <!-- ##### Breadcumb Area End ##### -->
+
+
+    <!-- ##### Add Area Start ##### -->
+    <div class="add-area mb-100 mt-50">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="adds">
+                        <a href="#"><img src=" {% static 'img/bg-img/add3.gif' %} " alt=""></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ##### Add Area End ##### -->
+
+    <!-- ##### Song Area Start ##### -->
+    <div class="one-music-songs-area mb-70">
+        <div class="container">
+            <div class="row">
+
+                <!-- Single Song Area -->
+                <div class="col-12">
+                    <div class="single-song-area mb-30 d-flex flex-wrap align-items-end">
+                        <div class="song-thumbnail">
+                            <img src=" {% static 'img/bg-img/s1.jpg' %}" alt="">
+                        </div>
+                        <div class="song-play-area">
+                            <div class="song-name">
+                                <p>01. Main Hit Song</p>
+                            </div>
+                            <audio preload="auto" controls>
+                                <source src=" {% static 'audio/dummy-audio.mp3' %} ">
+                            </audio>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Single Song Area -->
+                <div class="col-12">
+                    <div class="single-song-area mb-30 d-flex flex-wrap align-items-end">
+                        <div class="song-thumbnail">
+                            <img src=" {% static 'img/bg-img/s2.jpg' %} " alt="">
+                        </div>
+                        <div class="song-play-area">
+                            <div class="song-name">
+                                <p>01. Main Hit Song</p>
+                            </div>
+                            <audio preload="auto" controls>
+                                <source src=" {% static 'audio/dummy-audio.mp3' %} ">
+                            </audio>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Single Song Area -->
+                <div class="col-12">
+                    <div class="single-song-area mb-30 d-flex flex-wrap align-items-end">
+                        <div class="song-thumbnail">
+                            <img src=" {% static 'img/bg-img/s3.jpg' %}" alt="">
+                        </div>
+                        <div class="song-play-area">
+                            <div class="song-name">
+                                <p>01. Main Hit Song</p>
+                            </div>
+                            <audio preload="auto" controls>
+                                <source src=" {% static 'audio/dummy-audio.mp3' %} ">
+                            </audio>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Single Song Area -->
+                <div class="col-12">
+                    <div class="single-song-area mb-30 d-flex flex-wrap align-items-end">
+                        <div class="song-thumbnail">
+                            <img src=" {% static 'img/bg-img/s4.jpg' %} " alt="">
+                        </div>
+                        <div class="song-play-area">
+                            <div class="song-name">
+                                <p>01. Main Hit Song</p>
+                            </div>
+                            <audio preload="auto" controls>
+                                <source src=" {% static 'audio/dummy-audio.mp3' %} ">
+                            </audio>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- ##### Song Area End ##### -->
+
+    {% endblock content %}
