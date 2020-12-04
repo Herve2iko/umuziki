@@ -13,7 +13,7 @@ class Profil(models.Model):
 
 class Music(models.Model):
 	title = models.CharField(max_length=30)
-	author = models.ForeignKey(Profil, null=True, blank=True, on_delete=models.CASCADE)
+	author = models.ForeignKey(User, null=True, blank=True, on_delete=models.CASCADE)
 	featuring = models.CharField(null=True, blank=True, max_length=30)
 	composer =  models.CharField(max_length=30)
 	producer = models.CharField(max_length=30)
