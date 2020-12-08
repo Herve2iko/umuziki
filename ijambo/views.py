@@ -8,6 +8,7 @@ class HomeView(View):
 	template_name = 'index.html'
 
 	def get(self, request, *args, **kwargs):
+		imiziki = Music.objects.all().order_by('-id')[:12]
 		return render(request, self.template_name, locals())
 
 def register(request):
@@ -82,11 +83,13 @@ def contact(request):
 	return render(request, 'contact.html', locals())
 
 def musics(request):
+	imiziki = Music.objects.all()
 	return render(request, 'musics.html', locals())
 
 def musicsCategories(request):
 	return render(request, 'musics-categories.html', locals())
 
-def musicDetails(request):
+def musicDetails(request,id):
+	umuziki = Music.objects.get(id=id)
 	return render(request, 'music-details.html', locals())
 	

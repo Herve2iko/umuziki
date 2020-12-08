@@ -12,5 +12,5 @@ urlpatterns = [
     path('contact/', views.contact, name='contact'),
     path('musics/', views.musics, name='musics'),
     path('musics-categories/', views.musicsCategories, name='musicscategories'),
-    path('music-details/', views.musicDetails, name='musicdetails'),
+    path('music-details/<int:id>', views.musicDetails, name='musicdetails'),
 ]
