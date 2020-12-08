@@ -21,16 +21,25 @@ class Music(models.Model):
 	audio = models.FileField(upload_to="music/audios/")
 	release = models.DateField()
 
+
 	def __str__(self):
 		return f"{self.title} by {self.author}"
 
 class Album(models.Model):
+	author = models.ForeignKey(User, null=True, blank=True, on_delete=models.CASCADE)
 	title = models.CharField(max_length=30)
 	cover =  models.ImageField(upload_to="album/covers/")
-	music = models.ForeignKey(Music, null=True, blank=True, on_delete=models.CASCADE)
-
+	music = models.ManyToManyField(
+        Music,
+        through ='AlbumMusic',
+        through_fields =('albumSong', 'music'),
+    )
 	def __str__(self):
 		return f"Album : {self.title}"
+
+class AlbumMusic(models.Model):
+	albumSong = models.ForeignKey(Album, on_delete = models.CASCADE)
+	music = models.ForeignKey(Music, on_delete = models.CASCADE)
 
 class MonthSong(models.Model):
 	channel = models.CharField(max_length=30)
