@@ -95,7 +95,7 @@
 
                                     {% if user.is_authenticated %}
                                     <div class="cart-btn">
-                                        <p>{{ user.username }}</p>
+                                        <a href="{% url 'homeAdmin' %}" id="loginBtn"><p>{{ user.username }}</p></a> 
                                     </div>
                                     {% endif %}
                                 </div>
@@ -281,274 +281,30 @@
                 </div>
 
                 <div class="row">
-
+                    {% for umuziki in imiziki %}
                     <!-- Single Album Area -->
                     <div class="col-12 col-sm-6 col-md-4 col-lg-2">
                         <div class="single-album-area wow fadeInUp" data-wow-delay="100ms">
                             <div class="album-thumb">
-                                <img src=" {% static 'img/bg-img/b1.jpg' %} " alt="">
+                                <img src="{{ umuziki.cover.url }}" alt="">
                                 <!-- Album Price -->
                                 <div class="album-price">
-                                    <p>2000 Fbu</p>
+                                    <p>1000 Fbu</p>
                                 </div>
                                 <!-- Play Icon -->
-                                <div class="play-icon">
+                                <!--<div class="play-icon">
                                     <a href="#" class="video--play--btn"><span class="icon-play-button"></span></a>
-                                </div>
+                                </div>-->
                             </div>
                             <div class="album-info">
-                                <a href="#">
-                                    <h5>Ubusa/h5>
+                                <a href="{% url 'musicdetails' umuziki.id %}">
+                                    <h5>{{umuziki.title}}</h5>
                                 </a>
-                                <p>Big Fizzo</p>
+                                <p>{{umuziki.author}}</p>
                             </div>
                         </div>
                     </div>
-
-                    <!-- Single Album Area -->
-                    <div class="col-12 col-sm-6 col-md-4 col-lg-2">
-                        <div class="single-album-area wow fadeInUp" data-wow-delay="200ms">
-                            <div class="album-thumb">
-                                <img src=" {% static 'img/bg-img/b2.jpg' %} " alt="">
-                                <div class="album-price">
-                                    <p>2000 Fbu</p>
-                                </div>
-                                <!-- Play Icon -->
-                                <div class="play-icon">
-                                    <a href="#" class="video--play--btn"><span class="icon-play-button"></span></a>
-                                </div>
-                            </div>
-                            <div class="album-info">
-                                <a href="#">
-                                    <h5>Appele-moi</h5>
-                                </a>
-                                <p>Bain Turo ft Masterland</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Single Album Area -->
-                    <div class="col-12 col-sm-6 col-md-4 col-lg-2">
-                        <div class="single-album-area wow fadeInUp" data-wow-delay="300ms">
-                            <div class="album-thumb">
-                                <img src=" {% static 'img/bg-img/b3.jpg' %} " alt="">
-                                <div class="album-price">
-                                    <p>2000 Fbu</p>
-                                </div>
-                                <!-- Play Icon -->
-                                <div class="play-icon">
-                                    <a href="#" class="video--play--btn"><span class="icon-play-button"></span></a>
-                                </div>
-                            </div>
-                            <div class="album-info">
-                                <a href="#">
-                                    <h5>Nyonga</h5>
-                                </a>
-                                <p>Natasha</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Single Album Area -->
-                    <div class="col-12 col-sm-6 col-md-4 col-lg-2">
-                        <div class="single-album-area wow fadeInUp" data-wow-delay="400ms">
-                            <div class="album-thumb">
-                                <img src=" {% static 'img/bg-img/b4.jpg' %} " alt="">
-                                <div class="album-price">
-                                    <p>2000 Fbu</p>
-                                </div>
-                                <!-- Play Icon -->
-                                <div class="play-icon">
-                                    <a href="#" class="video--play--btn"><span class="icon-play-button"></span></a>
-                                </div>
-                            </div>
-                            <div class="album-info">
-                                <a href="#">
-                                    <h5>Focus</h5>
-                                </a>
-                                <p>MB Data</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Single Album Area -->
-                    <div class="col-12 col-sm-6 col-md-4 col-lg-2">
-                        <div class="single-album-area wow fadeInUp" data-wow-delay="500ms">
-                            <div class="album-thumb">
-                                <img src=" {% static 'img/bg-img/b1.jpg' %} " alt="">
-                                <!-- Album Price -->
-                                <div class="album-price">
-                                    <p>2000</p>
-                                </div>
-                                <!-- Play Icon -->
-                                <div class="play-icon">
-                                    <a href="#" class="video--play--btn"><span class="icon-play-button"></span></a>
-                                </div>
-                            </div>
-                            <div class="album-info">
-                                <a href="#">
-                                    <h5>HipPop</h5>
-                                </a>
-                                <p>19th</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Single Album Area -->
-                    <div class="col-12 col-sm-6 col-md-4 col-lg-2">
-                        <div class="single-album-area wow fadeInUp" data-wow-delay="600ms">
-                            <div class="album-thumb">
-                                <img src=" {% static 'img/bg-img/b2.jpg' %} " alt="">
-                                <div class="album-price">
-                                    <p>2000 Fbu</p>
-                                </div>
-                                <!-- Play Icon -->
-                                <div class="play-icon">
-                                    <a href="#" class="video--play--btn"><span class="icon-play-button"></span></a>
-                                </div>
-                            </div>
-                            <div class="album-info">
-                                <a href="#">
-                                    <h5>History</h5>
-                                </a>
-                                <p>Vichou Love</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Single Album Area -->
-                    <div class="col-12 col-sm-6 col-md-4 col-lg-2">
-                        <div class="single-album-area wow fadeInUp" data-wow-delay="100ms">
-                            <div class="album-thumb">
-                                <img src=" {% static 'img/bg-img/b3.jpg' %} " alt="">
-                                <div class="album-price">
-                                    <p>2000 Fbu</p>
-                                </div>
-                                <!-- Play Icon -->
-                                <div class="play-icon">
-                                    <a href="#" class="video--play--btn"><span class="icon-play-button"></span></a>
-                                </div>
-                            </div>
-                            <div class="album-info">
-                                <a href="#">
-                                    <h5>Queen</h5>
-                                </a>
-                                <p>Channy Queen</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Single Album Area -->
-                    <div class="col-12 col-sm-6 col-md-4 col-lg-2">
-                        <div class="single-album-area wow fadeInUp" data-wow-delay="200ms">
-                            <div class="album-thumb">
-                                <img src=" {% static 'img/bg-img/b4.jpg' %} " alt="">
-                                <div class="album-price">
-                                    <p>2000 Fbu</p>
-                                </div>
-                                <!-- Play Icon -->
-                                <div class="play-icon">
-                                    <a href="#" class="video--play--btn"><span class="icon-play-button"></span></a>
-                                </div>
-                            </div>
-                            <div class="album-info">
-                                <a href="#">
-                                    <h5>Ubibona Gute ?</h5>
-                                </a>
-                                <p>Natasha</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Single Album Area -->
-                    <div class="col-12 col-sm-6 col-md-4 col-lg-2">
-                        <div class="single-album-area wow fadeInUp" data-wow-delay="300ms">
-                            <div class="album-thumb">
-                                <img src=" {% static 'img/bg-img/b1.jpg' %} " alt="">
-                                <!-- Album Price -->
-                                <div class="album-price">
-                                    <p>2000 Fbu</p>
-                                </div>
-                                <!-- Play Icon -->
-                                <div class="play-icon">
-                                    <a href="#" class="video--play--btn"><span class="icon-play-button"></span></a>
-                                </div>
-                            </div>
-                            <div class="album-info">
-                                <a href="#">
-                                    <h5>Passport</h5>
-                                </a>
-                                <p>B-Face</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Single Album Area -->
-                    <div class="col-12 col-sm-6 col-md-4 col-lg-2">
-                        <div class="single-album-area wow fadeInUp" data-wow-delay="400ms">
-                            <div class="album-thumb">
-                                <img src=" {% static 'img/bg-img/b2.jpg' %} " alt="">
-                                <div class="album-price">
-                                    <p>2000 Fbu</p>
-                                </div>
-                                <!-- Play Icon -->
-                                <div class="play-icon">
-                                    <a href="#" class="video--play--btn"><span class="icon-play-button"></span></a>
-                                </div>
-                            </div>
-                            <div class="album-info">
-                                <a href="#">
-                                    <h5>Ntancike</h5>
-                                </a>
-                                <p>Double Jay</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Single Album Area -->
-                    <div class="col-12 col-sm-6 col-md-4 col-lg-2">
-                        <div class="single-album-area wow fadeInUp" data-wow-delay="500ms">
-                            <div class="album-thumb">
-                                <img src=" {% static 'img/bg-img/b3.jpg' %} " alt="">
-                                <div class="album-price">
-                                    <p>2000 Fbu</p>
-                                </div>
-                                <!-- Play Icon -->
-                                <div class="play-icon">
-                                    <a href="#" class="video--play--btn"><span class="icon-play-button"></span></a>
-                                </div>
-                            </div>
-                            <div class="album-info">
-                                <a href="#">
-                                    <h5>Ikidoma</h5>
-                                </a>
-                                <p>Kilikou Akili</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Single Album Area -->
-                    <div class="col-12 col-sm-6 col-md-4 col-lg-2">
-                        <div class="single-album-area wow fadeInUp" data-wow-delay="600ms">
-                            <div class="album-thumb">
-                                <img src=" {% static 'img/bg-img/b4.jpg' %} " alt="">
-                                <div class="album-price">
-                                    <p>2000 Fbu</p>
-                                </div>
-                                <!-- Play Icon -->
-                                <div class="play-icon">
-                                    <a href="#" class="video--play--btn"><span class="icon-play-button"></span></a>
-                                </div>
-                            </div>
-                            <div class="album-info">
-                                <a href="#">
-                                    <h5>Polepole</h5>
-                                </a>
-                                <p>AnraudVich</p>
-                            </div>
-                        </div>
-                    </div>
-
+                {% endfor %}
                 </div>
 
                 <div class="row">

@@ -6,9 +6,9 @@
     <!-- ##### Breadcumb Area Start ##### -->
     <section class="breadcumb-area bg-img bg-overlay" style="background-image: url( {% static 'img/bg-img/breadcumb3.jpg' %} );">
         <div class="bradcumbContent">
-            <h2>Baby Girl</h2>
+            <h2>{{umuziki.title}}</h2>
             <hr>
-            <p>Arist : Sat-B</p>
+            <p>Arist : {{umuziki.author}}</p>
         </div>
     </section>
     <!-- ##### Breadcumb Area End ##### -->
@@ -19,7 +19,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="adds">
-                        <a href="#"><img src=" {% static 'img/bg-img/add3.gif' %} " alt=""></a>
+                        <a href="#"><img src=" {{ umuziki.cover.url }} " alt=""></a>
                     </div>
                 </div>
             </div>
@@ -36,14 +36,14 @@
                 <div class="col-12">
                     <div class="single-song-area mb-30 d-flex flex-wrap align-items-end">
                         <div class="song-thumbnail">
-                            <img src=" {% static 'img/bg-img/s1.jpg' %}" alt="">
+                            <img src=" {{ umuziki.cover.url }}" alt="">
                         </div>
                         <div class="song-play-area">
                             <div class="song-name">
-                                <p>Baby Girl By Sat-B</p>
+                                <p>{{umuziki.title}} By {{umuziki.author}}</p>
                             </div>
                             <audio preload="auto" controls>
-                                <source src=" {% static 'audio/dummy-audio.mp3' %} ">
+                                <source src=" {{umuziki.audio.url}} ">
                             </audio>
                         </div>
                     </div>
