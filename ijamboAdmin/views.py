@@ -3,6 +3,9 @@ from django.contrib.auth.models import User
 from ijambo.models import *
 from .forms import *
 # Create your views here.
+@login_required(login_url='connect')
+def currentUser(request):
+	return request.user
 
 def home(request):
 	try:
@@ -23,3 +26,16 @@ def MusicRegester(request):
 			ff.save()
 	InputMusic = MusicForm()
 	return render(request, "forms.html",locals())
+
+def AlbumRegester(request):
+	InputAlbum = AlbumForm(request.POST or None, request.FILES)
+	if(request.method == 'POST'):
+		if(InputAlbum.is_valid()):
+			aa == InputAlbum.save(commit=False)
+			aa.author = request.user
+			aa.save()
+	InputAlbum = AlbumForm()
+	return render(request, "forms.html", locals())
+
+	
+	
