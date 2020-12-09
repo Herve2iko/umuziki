@@ -18,3 +18,8 @@ class AlbumForm(forms.ModelForm):
 		def __init__(self,request, *args, **kwargs):
 			super(AlbumForm,self).__init__(*args, **kwargs)
 			self.fields['music'].queryset = Music.objects.filter(author=request.user)
+
+class EventForm(forms.ModelForm):
+	class Meta:
+		model = Event
+		exclude =['author','paid',]
