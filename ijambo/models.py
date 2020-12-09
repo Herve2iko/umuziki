@@ -49,20 +49,28 @@ class MonthSong(models.Model):
 		return f"{self.channel} : {self.audio.title} by {self.audio.author}"
 
 class Contact(models.Model):
+	sender = models.CharField(max_length = 50, null = True)
 	email = models.EmailField()
-	messsage = models.TextField()
+	message = models.TextField()
 
 	def __str__(self):
-		return f"{self.email}"
+		return f"{self.message} {self.sender} adresse {self.email}"
 
 class Event(models.Model):
+	author = models.ForeignKey(User, null=True, blank=True, on_delete=models.CASCADE)
 	title = models.CharField(max_length=30)
 	cover = models.ImageField(upload_to="events/cover/")
 	organizer = models.CharField(max_length=30)
 	place = models.CharField(max_length=30)
 	entry_prices = models.CharField(max_length=40)
-	about = models.CharField(max_length=1000)
-	paid = models.BooleanField(False)
+	paid = models.BooleanField(default = False)
 
 	def __str__(self):
 		return f"{self.title}- place : {self.place} - Entry : {self.entry_prices}"
+
+class paiemment(models.Model):
+	codesender = models.IntegerField()
+	codeverifier = models.IntegerField()
+
+	def __str__(self):
+		return f"{self.codesender} verifie {self.codeverifier}"
