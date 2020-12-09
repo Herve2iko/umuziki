@@ -15,7 +15,7 @@ def home(request):
 		err_msg = "You must login first to access this page !"
 		return render(request, '404.html', locals())
 
-@login_required(login_url='connect')
+@login_required(login_url ='connect')
 def MusicRegester(request):
 	usr = request.user
 	InputMusic = MusicForm(request.POST or None, request.FILES)
@@ -37,5 +37,14 @@ def AlbumRegester(request):
 	InputAlbum = AlbumForm()
 	return render(request, "forms.html", locals())
 
-	
+@login_required(login_url ='connect')
+def EventRegester(request):
+	InputEvent = EventForm(request.POST or None, request.FILES)
+	if(request.method == 'POST'):
+		if(InputEvent.is_valid()):
+			ee = InputEvent.save(commit = False)
+			ee.author = request.user
+			ee.save()
+	InputEvent = EventForm()
+	return render(request, "forms.html", locals())
 	
