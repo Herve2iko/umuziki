@@ -73,6 +73,7 @@ def albumDetails(request):
 	return render (request, 'album-details.html', locals())
 
 def events(request):
+	ibirori = Event.objects.all().order_by('-id')[:9]
 	return render(request, 'events.html', locals())
 
 def eventDetails(request):
