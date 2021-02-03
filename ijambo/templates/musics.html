@@ -25,7 +25,7 @@
                             <img src="{{ umuziki.cover.url }}" alt="">
                         </div>
                         <div class="album-info">
-                            <a href="#">
+                            <a href="{% url 'musicdetails' umuziki.id %}">
                                 <h5>{{umuziki.title}}</h5>
                             </a>
                             <p>{{umuziki.author}}</p>
