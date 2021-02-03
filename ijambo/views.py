@@ -6,7 +6,6 @@ from django.contrib import messages
 
 class HomeView(View):
 	template_name = 'index.html'
-
 	def get(self, request, *args, **kwargs):
 		imiziki = Music.objects.all().order_by('-id')[:12]
 		return render(request, self.template_name, locals())
