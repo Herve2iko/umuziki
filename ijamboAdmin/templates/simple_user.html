@@ -35,7 +35,7 @@
                   </div>
                   <div class="col-3">
                     <div class="icon icon-box-success">
-                      <span class="mdi mdi-plus icon-item"></span>
+                      <a href="{% url 'album' %}"><span class="mdi mdi-plus icon-item"></span></a>
                     </div>
                   </div>
                 </div>
@@ -86,18 +86,22 @@
           <div class="col-md-4 grid-margin stretch-card">
             <div class="card">
               <div class="card-body">
-                <h4 class="card-title">Profile</h4>
-                <canvas id="transaction-history" class="transaction-chart"></canvas>
+                <h3 class="card-title">{{ user.username }}</h3>
+                <center>
+                  <div>
+                    <img class="rounded" src="{{profile.avatar.url}}">
+                  </div>
+                  </center>
                 <div class="bg-gray-dark d-flex d-md-block d-xl-flex flex-row py-3 px-4 px-md-3 px-xl-4 rounded mt-3">
                   <div class="text-md-center text-xl-left">
-                    <h6 class="mb-1">Transfer to Paypal</h6>
-                    <p class="text-muted mb-0">07 Jan 2019, 09:12AM</p>
+                    <h6 class="mb-1">{{ user.first_name }} {{ user.last_name }}</h6>
+                    <p class="text-muted mb-0">{{user.email}}</p>
                   </div>
-                  <div class="align-self-center flex-grow text-right text-md-center text-xl-right py-md-2 py-xl-0">
+                  <!--<div class="align-self-center flex-grow text-right text-md-center text-xl-right py-md-2 py-xl-0">
                     <h6 class="font-weight-bold mb-0">$236</h6>
-                  </div>
+                  </div>-->
                 </div>
-                <div class="bg-gray-dark d-flex d-md-block d-xl-flex flex-row py-3 px-4 px-md-3 px-xl-4 rounded mt-3">
+                <!--<div class="bg-gray-dark d-flex d-md-block d-xl-flex flex-row py-3 px-4 px-md-3 px-xl-4 rounded mt-3">
                   <div class="text-md-center text-xl-left">
                     <h6 class="mb-1">Tranfer to Stripe</h6>
                     <p class="text-muted mb-0">07 Jan 2019, 09:12AM</p>
@@ -105,7 +109,7 @@
                   <div class="align-self-center flex-grow text-right text-md-center text-xl-right py-md-2 py-xl-0">
                     <h6 class="font-weight-bold mb-0">$593</h6>
                   </div>
-                </div>
+                </div>-->
               </div>
             </div>
           </div>
@@ -113,8 +117,8 @@
             <div class="card">
               <div class="card-body">
                 <div class="d-flex flex-row justify-content-between">
-                  <h4 class="card-title mb-1">Open Projects</h4>
-                  <p class="text-muted mb-1">Your data status</p>
+                  <h4 class="card-title mb-1">Last Post</h4>
+                  <p class="text-muted mb-1">posted Date</p>
                 </div>
                 <div class="row">
                   <div class="col-12">
@@ -217,8 +221,8 @@
       <!-- partial:partials/_footer.html -->
       <footer class="footer">
         <div class="d-sm-flex justify-content-center justify-content-sm-between">
-          <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2019 <a href="https://www.bootstrapdash.com/" target="_blank">BootstrapDash</a>. All rights reserved.</span>
-          <span class="text-muted float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="mdi mdi-heart text-danger"></i></span>
+          <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © <script>document.write(new Date.getFullYear());</script> <a href="#" target="_blank">The Krwez</a>. All rights reserved.</span>
+          <span class="text-muted float-none float-sm-right d-block mt-1 mt-sm-0 text-center">buy & support <i class="mdi mdi-heart text-danger"></i></span>
         </div>
       </footer>
       <!-- partial -->
