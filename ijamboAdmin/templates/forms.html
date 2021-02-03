@@ -1,26 +1,55 @@
-{% load static %}
-{% load crispy_forms_tags %}
-<!DOCTYPE html>
-<html>
-<head>
-	<title>insertmusic</title>
-	<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
-</head>
-<body>
-	{% block titre %}Formilaire {% endblock %}
-	{% block form %}
-		{% if InputMusic %}
-			<div class="container">
-				<div class="row justify-content-center">
-					<div class="col-md-7">
-						<form class="uniForm" action="{% url 'music' %}" method="post" enctype="multipart/form-data">
-						{% csrf_token %}
-						{{ InputMusic|crispy }} 
-						<button class="btn btn-success" type="submit">Submit New Post</button>
-						</form>
-					</div>
-				</div>
-			</div>
+
+{% extends 'main.html' %}
+
+
+{% block content %}
+	{% if InputMusic %}
+	<div class="main-panel">
+          <div class="content-wrapper">
+            <div class="content-wrapper full-page-wrapper d-flex align-items-center auth login-bg">
+            <div class="card col-lg-5 mx-auto">
+              <div class="card-body px-5 py-5">
+                <h3 class="card-title text-left mb-3">Add new Music</h3>
+                <form method="post" action="{% url 'music' %}" enctype="multipart/form-data">
+                	{% csrf_token %}
+                  <div class="form-group">
+                    <label>Titre</label>
+                    {{InputMusic.title}}
+                  </div>
+                  <div class="form-group">
+                    <label>Featuring</label>
+                    {{InputMusic.featuring}}
+                  </div>
+                  <div class="form-group">
+                    <label>Compositeur</label>
+                    {{InputMusic.composer}}
+                  </div>
+                  <div class="form-group">
+                    <label>Producteur</label>
+                    {{InputMusic.producer}}
+                  </div>
+                  <div class="form-group">
+                    <label>Cover</label>
+                    {{InputMusic.cover}}
+                  </div>
+                  <div class="form-group">
+                    <label>Audio</label>
+                    {{InputMusic.audio}}
+                  </div>
+                  <div class="form-group">
+                    <label>Release</label>
+                    {{InputMusic.release}}
+                  </div>
+                  
+                  <div class="text-center">
+                    <button type="submit" class="btn btn-primary btn-block enter-btn">upload</button>
+                  </div>
+                  
+                </form>
+              </div>
+            </div>
+          </div>
+          </div>
 		{% endif %}
 
 		{% if InputLyrics %}
@@ -29,7 +58,7 @@
 					<div class="col-md-7">
 						<form class="form-group" action="{% url 'text' %}" method="post" enctype="multipart/form-data">
 						{% csrf_token %}
-						{{ InputLyrics|crispy }}<br>
+						{{ InputLyrics.as_p }}<br>
 						<button class="btn btn-success" type="submit">Submit New Post</button>
 						</form>
 					</div>
@@ -38,17 +67,35 @@
 		{% endif %}
 
 		{% if InputAlbum %}
-			<div class="container">
-				<div class="row justify-content-center">
-					<div class="col-md-7">
-						<form class="form-group" action="{% url 'album' %}" method="post" enctype="multipart/form-data">
-						{% csrf_token %}
-						{{ InputAlbum|crispy }}<br>
-						<button class="btn btn-success" type="submit">Submit New Post</button>
-						</form>
-					</div>
-				</div>
-			</div>
+			<div class="main-panel">
+          <div class="content-wrapper">
+            <div class="content-wrapper full-page-wrapper d-flex align-items-center auth login-bg">
+            <div class="card col-lg-5 mx-auto">
+              <div class="card-body px-5 py-5">
+                <h3 class="card-title text-left mb-3">Add new Album</h3>
+                <form method="post" action="{% url 'album' %}" enctype="multipart/form-data">
+                	{% csrf_token %}
+                  <div class="form-group">
+                    <label>Titre</label>
+                    {{InputAlbum.title}}
+                  </div>
+                  <div class="form-group">
+                    <label>Cover</label>
+                    {{InputAlbum.cover}}
+                  </div>
+                  <div class="form-group">
+                    <label>Musics</label>
+                    {{InputAlbum.music}}
+                  </div>
+                  <div class="text-center">
+                    <button type="submit" class="btn btn-primary btn-block enter-btn">upload</button>
+                  </div>
+                  
+                </form>
+              </div>
+            </div>
+          </div>
+          </div>
 		{% endif %}
 
 
@@ -58,7 +105,7 @@
 					<div class="col-md-7">
 						<form class="form-group" action="{% url 'mois' %}" method="post" enctype="multipart/form-data">
 						{% csrf_token %}
-						{{ InputChansonMois|crispy }}<br>
+						{{ InputChansonMois.as_p }}<br>
 						<button class="btn btn-success" type="submit">Submit New Post</button>
 						</form>
 					</div>
@@ -72,7 +119,7 @@
 					<div class="col-md-7">
 						<form class="form-group" action="{% url 'contact' %}" method="post" enctype="multipart/form-data">
 						{% csrf_token %}
-						{{ InputContact|crispy }}<br>
+						{{ InputContact.as_p }}<br>
 						<button class="btn btn-success" type="submit">Submit New Post</button>
 						</form>
 					</div>
@@ -81,46 +128,91 @@
 		{% endif %}
 
 		{% if InputEvent %}
-			<div class="container">
-				<div class="row justify-content-center">
-					<div class="col-md-7">
-						<form class="form-group" action="{% url 'event' %}" method="post" enctype="multipart/form-data">
-						{% csrf_token %}
-						{{ InputEvent|crispy }}<br>
-						<button class="btn btn-success" type="submit">Submit New Post</button>
-						</form>
-					</div>
-				</div>
-			</div>
-		{% endif %}
-				{% if InputUser %}
-			<div class="container">
-				<div class="row justify-content-center">
-					<div class="col-md-7">
-						<form class="form-group" action="{% url 'profil' %}" method="post" enctype="multipart/form-data">
-						{% csrf_token %}
-						{{ InputUser|crispy }}<br>
-						<button class="btn btn-success" type="submit">Submit New Post</button>
-						</form>
-					</div>
-				</div>
-			</div>
+			<div class="main-panel">
+          <div class="content-wrapper">
+            <div class="content-wrapper full-page-wrapper d-flex align-items-center auth login-bg">
+            <div class="card col-lg-5 mx-auto">
+              <div class="card-body px-5 py-5">
+                <h3 class="card-title text-left mb-3">Add new Event</h3>
+                <form method="post" action="{% url 'event' %}" enctype="multipart/form-data">
+                	{% csrf_token %}
+                  <div class="form-group">
+                    <label>Titre</label>
+                    {{InputEvent.title}}
+                  </div>
+                  <div class="form-group">
+                    <label>Cover</label>
+                    {{InputEvent.cover}}
+                  </div>
+                  <div class="form-group">
+                    <label>Organisateur</label>
+                    {{InputEvent.organizer}}
+                  </div>
+                  <div class="form-group">
+                    <label>Place</label>
+                    {{InputEvent.place}}
+                  </div>
+                  <div class="form-group">
+                    <label>entrer</label>
+                    {{InputEvent.entry_prices}}
+                  </div>
+                  <div class="text-center">
+                    <button type="submit" class="btn btn-primary btn-block enter-btn">Publier</button>
+                  </div>
+                  
+                </form>
+              </div>
+            </div>
+          </div>
+          </div>
 		{% endif %}
 
-				{% if connexion_form %}
-			<div class="container">
-				<div class="row justify-content-center">
-					<div class="col-md-7">
-						<form class="form-group" action="{% url 'connect' %}" method="post" enctype="multipart/form-data">
-						{% csrf_token %}
-						{{ connexion_form|crispy }}<br>
-						<button class="btn btn-success" type="submit">Connect</button>
-						</form>
-					</div>
-				</div>
-			</div>
-		{% endif %}
-
+    {% if ModiMusic %}
+  <div class="main-panel">
+          <div class="content-wrapper">
+            <div class="content-wrapper full-page-wrapper d-flex align-items-center auth login-bg">
+            <div class="card col-lg-5 mx-auto">
+              <div class="card-body px-5 py-5">
+                <h3 class="card-title text-left mb-3">Update Music</h3>
+                <form method="post" action="{% url 'upMusic' ms.id %}" enctype="multipart/form-data">
+                  {% csrf_token %}
+                  <div class="form-group">
+                    <label>Titre</label>
+                    {{ModiMusic.title}}
+                  </div>
+                  <div class="form-group">
+                    <label>Featuring</label>
+                    {{ModiMusic.featuring}}
+                  </div>
+                  <div class="form-group">
+                    <label>Compositeur</label>
+                    {{ModiMusic.composer}}
+                  </div>
+                  <div class="form-group">
+                    <label>Producteur</label>
+                    {{ModiMusic.producer}}
+                  </div>
+                  <div class="form-group">
+                    <label>Cover</label>
+                    {{ModiMusic.cover}}
+                  </div>
+                  <div class="form-group">
+                    <label>Audio</label>
+                    {{ModiMusic.audio}}
+                  </div>
+                  <div class="form-group">
+                    <label>Release</label>
+                    {{ModiMusic.release}}
+                  </div>
+                  
+                  <div class="text-center">
+                    <button type="submit" class="btn btn-primary btn-block enter-btn">upload</button>
+                  </div>
+                  
+                </form>
+              </div>
+            </div>
+          </div>
+          </div>
+    {% endif %}
 	{% endblock%}
-</body>
-</html>
