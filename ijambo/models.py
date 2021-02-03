@@ -12,11 +12,11 @@ class Profil(models.Model):
         return f"{self.user.username}"
 
 class Music(models.Model):
-	title = models.CharField(max_length=30)
+	title = models.CharField(max_length=50)
 	author = models.ForeignKey(User, null=True, blank=True, on_delete=models.CASCADE)
-	featuring = models.CharField(null=True, blank=True, max_length=30)
-	composer =  models.CharField(max_length=30)
-	producer = models.CharField(max_length=30)
+	featuring = models.CharField(null=True, blank=True, max_length=50)
+	composer =  models.CharField(max_length=50)
+	producer = models.CharField(max_length=50)
 	cover = models.ImageField(upload_to="music/covers/")
 	audio = models.FileField(upload_to="music/audios/")
 	release = models.DateField()
