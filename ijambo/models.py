@@ -21,10 +21,16 @@ class Music(models.Model):
 	audio = models.FileField(upload_to="music/audios/")
 	release = models.DateField()
 
-
 	def __str__(self):
 		return f"{self.title} by {self.author}"
 
+class Lyrics(models.Model):
+	author = models.ForeignKey(User, related_name='auteulyrics', null=True, blank=True, on_delete=models.CASCADE)
+	music = models.ForeignKey(Music, related_name='musiclyrics', on_delete = models.CASCADE)
+	texte = models.TextField()
+	#def __str__(self):
+		#return f"songs: {self.music.title}--text: {self.texte}"
+		
 class Album(models.Model):
 	author = models.ForeignKey(User, null=True, blank=True, on_delete=models.CASCADE)
 	title = models.CharField(max_length=30)
@@ -40,7 +46,9 @@ class Album(models.Model):
 class AlbumMusic(models.Model):
 	albumSong = models.ForeignKey(Album, on_delete = models.CASCADE)
 	music = models.ForeignKey(Music, on_delete = models.CASCADE)
-
+	class Meta:
+		unique_together =[['albumSong','music']]
+		
 class MonthSong(models.Model):
 	channel = models.CharField(max_length=30)
 	audio = models.ForeignKey(Music, null=True, blank=True, on_delete=models.CASCADE)
