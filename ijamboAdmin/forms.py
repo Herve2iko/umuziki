@@ -65,6 +65,17 @@ class MusicForm(forms.ModelForm):
 		model = Music
 		exclude = ['author',]
 
+
+class LyricsForm(forms.ModelForm):
+    texte = forms.CharField(widget = forms.TextInput(
+        attrs = {
+                'placeholder':'amajambo yawe',
+                'type':'textarea',
+                'class':'form-control',
+                }))
+    class Meta : 
+        model = Music
+        exclude = ['author',]
 class AlbumForm(forms.ModelForm):
     title = forms.CharField(
         label='Titre',
