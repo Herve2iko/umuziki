@@ -8,6 +8,15 @@ class HomeView(View):
 	template_name = 'index.html'
 	def get(self, request, *args, **kwargs):
 		imiziki = Music.objects.all().order_by('-id')[:12]
+		albums = Album.objects.all()
+		return render(request, self.template_name, locals())
+
+	def post(self, request, *args, **kwargs):
+		InputContact = ContactForm(request.POST or None)
+		if(request.method == 'POST'):
+			if(InputContact.is_valid()):
+				InputContact.save()
+		InputContact = ContactForm()
 		return render(request, self.template_name, locals())
 
 def register(request):
@@ -78,6 +87,9 @@ def events(request):
 def eventDetails(request):
 	return render(request, 'event-details.html', locals())
 
+def contactrecever(request):
+	
+	return render(request, 'index.html', locals())
 
 def contact(request):
 	return render(request, 'contact.html', locals())
