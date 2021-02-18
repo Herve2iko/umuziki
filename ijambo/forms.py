@@ -51,3 +51,28 @@ class LoginForm(forms.Form):
             'placeholder':'password ',
             'type':'password',
             'class':'form-control'}))
+
+class ContactForm(forms.ModelForm):
+    sender = forms.CharField(widget = forms.TextInput(
+        attrs = {
+                'placeholder':'Izina',
+                'type':'text',
+                'class':'form-control',
+                'id':'name'}))
+    email = forms.CharField(widget = forms.TextInput(
+        attrs = {
+                'placeholder':'Email yawe',
+                'type':'email',
+                'class':'form-control',
+                'id':'email'}))
+    message = forms.CharField(widget = forms.TextInput(
+        attrs = {
+                'placeholder':'Message yawe',
+                'type':'textarea',
+                'class':'form-control',
+                'id':'message',
+                'cols':'30',
+                'rows':'10'}))
+    class Meta:
+        model = Contact
+        fields = '__all__'
