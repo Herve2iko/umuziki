@@ -1,0 +1,45 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block content %}
+<h1>herve</h1>
+{% if msics %}
+<div class="col-lg-12 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">Striped Table</h4>
+                    <div class="table-responsive">
+                      <table class="table table-striped">
+                        <thead>
+                          <tr>
+                            <th> User </th>
+                            <th> Title </th>
+                            <th> Song </th>
+                            <th> action 1 </th>
+                            <th> action 2 </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                        {% for ms in msics %} 
+                          <tr>
+                            <td class="py-1">
+                              <img src="{{ms.cover.url}}"/>
+                            </td>
+                            <td> {{ms.title}} </td>
+                            <td>
+                              <div class="">
+                                  <audio src="{{ms.audio.url}}" controls></audio> 
+                              </div>
+                            </td>
+                            <td> <a href="{% url 'upMusic' ms.id %} ">Update</a></td>
+                            <td> May 15, 2015 </td>
+                          </tr>
+                          {% endfor %}        
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              {% endif %}
+{% endblock %}
