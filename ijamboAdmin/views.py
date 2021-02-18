@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from ijambo.models import *
 from .forms import *
 # Create your views here.
-@login_required(login_url='connect')
+@login_required(login_url='login')
 def currentUser(request):
 	return request.user
 
@@ -15,7 +15,7 @@ def home(request):
 		err_msg = "You must login first to access this page !"
 		return render(request, '404.html', locals())
 
-@login_required(login_url ='connect')
+@login_required(login_url ='login')
 def MusicRegester(request):
 	usr = request.user
 	profile = Profil.objects.get(user=usr)
@@ -27,9 +27,9 @@ def MusicRegester(request):
 			ff.author = usr
 			ff.save()
 	InputMusic = MusicForm()
-	return render(request, "forms.html",locals())
+	return render(request, 'forms-f.html',locals())
 
-@login_required(login_url ='connect')
+@login_required(login_url ='login')
 def AlbumRegester(request):
 	usr = request.user
 	profile = Profil.objects.get(user=usr)
@@ -40,9 +40,9 @@ def AlbumRegester(request):
 			aa.author = request.user
 			aa.save()
 	InputAlbum = AlbumForm(request.user)
-	return render(request, "forms.html", locals())
+	return render(request, "forms-f.html", locals())
 
-@login_required(login_url ='connect')
+@login_required(login_url ='login')
 def EventRegester(request):
 	usr = request.user
 	profile = Profil.objects.get(user=usr)
@@ -53,16 +53,51 @@ def EventRegester(request):
 			ee.author = request.user
 			ee.save()
 	InputEvent = EventForm()
-	return render(request, "forms.html", locals())
+	return render(request, "forms-f.html", locals())
 
-@login_required(login_url ='connect')	
+@login_required(login_url ='login')
+def LyricsRegester(request):
+	usr = request.user
+	profile = Profil.objects.get(user=usr)
+	InputLyrics = LyricsForm(request.POST or None, request.FILES)
+	if(request.method == 'POST'):
+		if(InputLyrics.is_valid()):
+			ly = InputLyrics.save(commit = False)
+			ly.author = request.user
+			ly.save()
+	InputLyrics = LyricsForm()
+	return render(request, "forms-f.html", locals())
+
+@login_required(login_url ='login')	
 def MusicListe(request):
 	usr = request.user
 	profile = Profil.objects.get(user=usr)
 	msics = Music.objects.filter(author = usr)
 	return render(request, "liste.html", locals())
 
-@login_required(login_url ='connect')	
+@login_required(login_url ='login')	
+def MusicListe(request):
+	usr = request.user
+	profile = Profil.objects.get(user=usr)
+	msics = Music.objects.filter(author = usr)
+	return render(request, "liste.html", locals())
+	
+@login_required(login_url ='login')	
+def AlbumListe(request):
+	usr = request.user
+	profile = Profil.objects.get(user=usr)
+	Albumls = Album.objects.filter(author = usr)
+	return render(request, "liste.html", locals())
+
+@login_required(login_url ='login')	
+def EventListe(request):
+	usr = request.user
+	profile = Profil.objects.get(user=usr)
+	Eventls = Event.objects.filter(author = usr)
+	return render(request, "liste.html", locals())
+
+
+@login_required(login_url ='login')	
 def UpdateMusic(request, ms_id):
 	ms = Music.objects.get(id = ms_id)
 	ModiMusic = MusicForm(request.POST or None, request.FILES, instance= ms)
@@ -74,4 +109,4 @@ def UpdateMusic(request, ms_id):
 			ff.save()
 			return redirect(MusicListe)
 	ModiMusic = MusicForm(instance = ms)
-	return render(request,"forms.html" , locals())
+	return render(request,"forms-f.html" , locals())
